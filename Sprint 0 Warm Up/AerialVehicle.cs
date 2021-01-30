@@ -5,42 +5,59 @@ namespace Sprint_0_Warm_Up
     public abstract class AerialVehicle
     {
         public int CurrentAltitude { get; set; }
+        public int MaxAltitude { get; set; }
 
-        Engine Engine { get; set; }
+        Engine engine { get; set; } = new Engine();
 
         public AerialVehicle()
         {
 
         }
 
-        public bool About()
+        public string About()
         {
-            throw new NotImplementedException();
+            return ($"this {this.ToString()} has a max altitude of {MaxAltitude} ft\nIt's current altitude is {CurrentAltitude} ft\n{engine.About()}");
         }
 
-        public bool TakeOff()
+        public string TakeOff()
         {
-            throw new NotImplementedException();
+            if (engine.IsStarted)
+            {
+                return $"{this.ToString()} is flying";
+            }
+            else
+            {
+                return $"{this.ToString()} can't fly it's engine is not started.";
+            }
         }
 
         public void StartEngine()
         {
-            throw new NotImplementedException();
+            engine.Start();
         }
 
         public void FlyDown(int howMuch)
         {
-            throw new NotImplementedException();
+            if (CurrentAltitude - howMuch >= 0)
+            {
+                CurrentAltitude -= howMuch;
+            }
         }
 
         internal void FlyUp()
         {
-            throw new NotImplementedException();
+            if (this.CurrentAltitude + 1000 <= MaxAltitude)
+            {
+                this.CurrentAltitude += 1000;
+            }
         }
 
         internal void FlyUp(int HowMuch)
         {
-            throw new NotImplementedException();
+            if (CurrentAltitude + HowMuch <= MaxAltitude)
+            {
+                this.CurrentAltitude += HowMuch;
+            }
         }
     }
 }
