@@ -9,7 +9,7 @@ namespace Sprint_0_Warm_Up
 
         public bool isFlying { get; set; }
 
-        public Engine engine { get; set; } = new Engine();
+        internal Engine engine { get; set; } = new Engine();
 
         public AerialVehicle()
         {
