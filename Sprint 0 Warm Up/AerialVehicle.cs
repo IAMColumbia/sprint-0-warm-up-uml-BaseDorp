@@ -21,7 +21,7 @@ namespace Sprint_0_Warm_Up
             return ($"this {this.ToString()} has a max altitude of {MaxAltitude} ft\nIt's current altitude is {CurrentAltitude} ft\n{engine.About()}");
         }
 
-        public string TakeOff()
+        public virtual string TakeOff()
         {
             if (engine.IsStarted)
             {
@@ -34,7 +34,7 @@ namespace Sprint_0_Warm_Up
             }
         }
 
-        public void StartEngine()
+        public virtual void StartEngine()
         {
             engine.Start();
         }

@@ -4,31 +4,43 @@ using System.Text;
 
 namespace Sprint_0_Warm_Up
 {
-    class ToyPlane : Airplane
+    public class ToyPlane : Airplane
     {
-        bool isWoundUp;
+        public bool isWoundUp;
 
-        string About()
-        {
-            return "";
-        }
-
-        string getWindUpString()
-        {
-            return "";
-        }
-
-        void StartEngine()
+        public string About()
         {
             if (isWoundUp)
             {
-                engine.Start();
+                return $"{this} is wound up";
+            }
+            else
+            {
+                return $"{this} is not wound up";
             }
         }
 
-        string TakeOff()
+        public string getWindUpString()
         {
-            return "";
+            return $"{this} is winding up";
+        }
+
+        public override void StartEngine()
+        {
+            WindUp();
+        }
+
+        public override string TakeOff()
+        {
+            if (CurrentAltitude == 0 && isWoundUp)
+            {
+                CurrentAltitude = 10;
+                return $"{this} has taken off";
+            }
+            else
+            {
+                return $"{this} cannot take off";
+            }
         }
 
         public ToyPlane()
@@ -36,14 +48,17 @@ namespace Sprint_0_Warm_Up
             MaxAltitude = 50;
         }
 
-        void UnWind()
+        public void UnWind()
         {
             isWoundUp = false;
+            this.engine.Stop();
         }
 
-        void WindUp()
+        public void WindUp()
         {
             isWoundUp = true;
+            getWindUpString();
+            this.engine.Start();
         }
     }
 }
