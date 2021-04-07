@@ -1,8 +1,8 @@
 ﻿namespace Sprint_0_Warm_Up
 {
-    public class Engine
+    public class Engine : IEngine
     {
-        public bool IsStarted { get; private set; }
+        public bool IsStarted { get; set; }
 
         public string About()
         {
